@@ -1,0 +1,176 @@
+{% extends 'drobnica/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row" id="upper-bar">
+        <div class="col-lg-12">
+            <h2> Zlecenie drobnicowe </h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <label for="dlvry_number">Numer zlecenia: </label>
+            </div><br>
+            <div>
+                <input id="dlvry_number" type="text" readonly="readonly" value="{{order.id}}">
+            </div>
+            <div>
+                <label for="ref_number">Referncja zlecenia: </label>
+            </div><br>
+            <div>
+                <input id="ref_number" type="text" readonly="readonly" value="{{order.customer_reference}}">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="collect-date">
+                <h3>Data rozładunku: {{ order.collect_date }}</h3>
+            </div>
+            <div id="collect-from-address-header">
+                <h3>Adres załadunku</h3>
+            </div>
+            <div id="collect-from-address-data">
+                <table>
+                    <tr>
+                        <td>Nazwa: </td>
+                        <td>{{ order.collect_address.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ulica</td>
+                        <td>{{ order.collect_address.street }}</td>
+                    </tr>
+                    <tr>
+                        <td>Numer ulicy</td>
+                        <td>{{ order.collect_address.house_number }}</td>
+                    </tr>
+                    <tr>
+                        <td>Numer mieszkania</td>
+                        <td>{{ order.collect_address.apt_number }}</td>
+                    </tr>
+                    <tr>
+                        <td>Kod pocztowy</td>
+                        <td>{{ order.collect_address.post_code }}</td>
+                    </tr>
+                    <tr>
+                        <td>Osoba kontaktowa</td>
+                        <td>{{ order.collect_address.contact_person }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{ order.collect_address.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nr telefonu</td>
+                        <td>{{ order.collect_address.phone }}</td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+            <div id="delivery-date">
+                <h3>Data rozładunku: {{ order.delivery_date }}</h3>
+            </div>
+            <div id="delivery-address-header">
+                <h3>Adres rozładunku</h3>
+            </div>
+            <div id="delivery-from-address-data">
+                <table>
+                    <tr>
+                        <td>Nazwa: </td>
+                        <td>{{ order.delivery_address.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Ulica</td>
+                        <td>{{ order.delivery_address.street }}</td>
+                    </tr>
+                    <tr>
+                        <td>Numer ulicy</td>
+                        <td>{{ order.delivery_address.house_number }}</td>
+                    </tr>
+                    <tr>
+                        <td>Numer mieszkania</td>
+                        <td>{{ order.delivery_address.apt_number }}</td>
+                    </tr>
+                    <tr>
+                        <td>Kod pocztowy</td>
+                        <td>{{ order.delivery_address.post_code }}</td>
+                    </tr>
+                    <tr>
+                        <td>Osoba kontaktowa</td>
+                        <td>{{ order.delivery_address.contact_person }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{ order.delivery_address.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Nr telefonu</td>
+                        <td>{{ order.delivery_address.phone }}</td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="packaging">
+                <h3>Lista opakowań</h3>
+            </div>
+            <div class="tpack">
+                <table style="width:100%">
+                    <tr>
+                        <th>Opis towaru</th>
+                        <th>Typ opakowania</th>
+                        <th>Dlugosc opakowania</th>
+                        <th>Szerokosc opakowania</th>
+                        <th>Wysokosc opakowania</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            {{order.cargo.pack_type}}
+                        </td>
+                        <td>
+                            {{order.cargo.pack_type}}
+                        </td>
+                        <td>
+                            {{order.cargo.length}}
+                        </td>
+                        <td>
+                            {{order.cargo.width}}
+                        </td>
+                        <td>
+                            {{order.cargo.height}}
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="order-details">
+                <h3>Dodatkowe Informacje</h3>
+                <p class="text-justify">{{order.remarks}}</p>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<div id="edit-button">
+        <a class="btn btn-default" href="{% url 'order_edit' pk=order.pk %}"><span><strong>Edit</strong></span></a>
+
+</div>
+{% endblock %}

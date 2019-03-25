@@ -1,0 +1,14 @@
+.page-header {
+    color: brown;
+    background-color: antiquewhite;
+    font-style: oblique;
+    margin-top:  40px;
+    padding: 20px 20px 20px 30px;
+}
+
+div.package {
+    background-color: blanchedalmond;
+    border: 2px solid burlywood;
+    padding: 30px;
+    
+}

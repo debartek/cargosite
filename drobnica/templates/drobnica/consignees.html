@@ -1,0 +1,70 @@
+{% extends 'drobnica/base.html' %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 15px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .tpack {
+        max-width: 900px;
+        margin: auto;
+    }
+</style>
+<div class="tpack">
+    <table style="width:100%">
+        <tr>
+            <th>Nazwa</th>
+            <th>Ulica</th>
+            <th>Numer ulicy</th>
+            <th>Nr mieszkania</th>
+            <th>Kod pocztowy</th>
+            <th>Osoba kontaktowa</th>
+            <th>Email</th>
+            <th>Nr telefonu</th>
+        </tr>
+        {% for consignee in consignees %}
+        <tr>
+            <td>
+                {{consignee.name}}
+
+            </td>
+            <td>
+                {{consignee.address.street}}
+            </td>
+            <td>
+                {{consignee.address.house_number}}
+            </td>
+            <td>
+                {{consignee.address.apt_number}}
+            </td>
+            <td>
+                {{consignee.address.post_code}}
+            </td>
+            <td>
+                {{consignee.address.contact_person}}
+            </td>
+            <td>
+                {{consignee.address.email}}
+            </td>
+            <td>
+                {{consignee.address.phone}}
+            </td>
+        </tr>
+        {% endfor%}
+    </table>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'drobnica/base.html' %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style>
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 15px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    .tpack {
+        max-width: 900px;
+        margin: auto;
+    }
+</style>
+<div class="tpack">
+    <table style="width:100%">
+        <tr>
+            <th>Kod opakowania</th>
+            <th>Dlugosc opakowania</th>
+            <th>Szerokosc opakowania</th>
+            <th>Wysokosc opakowania</th>
+        </tr>
+        {% for package in packages %}
+        <tr>
+            <td>
+                {{package.pack_type}}
+
+            </td>
+            <td>
+                {{package.length}}
+            </td>
+            <td>
+                {{package.width}}
+            </td>
+            <td>
+                {{package.height}}
+            </td>
+        </tr>
+        {% endfor%}
+    </table>
+
+</div>
+
+
+{% endblock %}
